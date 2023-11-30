@@ -67,6 +67,25 @@ class User extends Authenticatable
         return $return;
     }
 
+    static function getStudent(){
+        $return = self::select('users.*')
+                    ->where('user_type', '=' ,3)
+                    ->where('is_deleted', '=' ,0);
+                    if(!empty(Request::get('name'))){
+                        $return = $return->where('name', 'like', '%'.Request::get('name').'%');
+                    }
+                    if(!empty(Request::get('email'))){
+                        $return = $return->where('email', 'like', '%'.Request::get('email').'%');
+                    }
+                    if(!empty(Request::get('date'))){
+                        $return = $return->whereDate('created_at', '=', Request::get('date'));
+                    }
+
+        $return  = $return->orderBy('id', 'desc')
+                    ->paginate(20);
+        return $return;
+    }
+
     static public function getEmailSingle($email){
         return User::where('email', '=', $email)->first();
     }
