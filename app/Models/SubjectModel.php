@@ -30,11 +30,21 @@ class SubjectModel extends Model
 
 
         $return = $return->orderBy('id', 'desc')
-            ->paginate(20);
+            ->paginate(10);
         return $return;
     }
     static function getSingle($id)
     {
         return self::find($id);
+    }
+
+    static function getAllSubject(){
+        $return = self::select('subjects.*')
+                    //->join('users', 'users.id', 'class.created_by')
+                    ->where('is_deleted', '=' ,0)
+                    ->where('status', '=' ,0)
+                    ->orderBy('name', 'asc')
+                    ->get();
+        return $return;
     }
 }

@@ -63,7 +63,7 @@ class User extends Authenticatable
                     }
 
         $return  = $return->orderBy('id', 'desc')
-                    ->paginate(20);
+                    ->paginate(10);
         return $return;
     }
 
@@ -82,7 +82,7 @@ class User extends Authenticatable
                     }
 
         $return  = $return->orderBy('id', 'desc')
-                    ->paginate(20);
+                    ->paginate(10);
         return $return;
     }
 

@@ -27,10 +27,20 @@ class ClassModel extends Model
                     }
 
         $return  = $return->orderBy('id', 'desc')
-                    ->paginate(20);
+                    ->paginate(10);
         return $return;
     }
     static function getSingle($id){
         return self::find($id);
+    }
+
+    static function getAllClass(){
+        $return = self::select('class.*')
+                    //->join('users', 'users.id', 'class.created_by')
+                    ->where('is_deleted', '=' ,0)
+                    ->where('status', '=' ,0)
+                    ->orderBy('id', 'asc')
+                    ->get();
+        return $return;
     }
 }
