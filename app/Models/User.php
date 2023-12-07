@@ -92,5 +92,13 @@ class User extends Authenticatable
     static public function getTokenSingle($remember_token){
         return User::where('remember_token', '=', $remember_token)->first();
     }
+    public function getImage(){
+        if (!empty($this->image) && file_exists('upload/profile/'.$this->image)) {
+            return url('upload/profile/'.$this->image);
+        }
+        else {
+            return "";
+        }
+    }
 
 }

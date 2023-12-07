@@ -110,6 +110,7 @@
                                             <label>Mobile Number</label>
                                             <input type="text" class="form-control" value="{{ old('mobile_number') }}"
                                                 name="mobile_number" placeholder="Mobile Rumber">
+                                            <div style="color: red">{{ $errors->first('mobile_number') }}</div>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Caste</label>
@@ -127,11 +128,13 @@
                                             <label>Height</label>
                                             <input type="text" class="form-control" value="{{ old('height') }}"
                                                 name="height" placeholder="Height">
+                                            <div style="color: red">{{ $errors->first('height') }}</div>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Weight</label>
                                             <input type="text" class="form-control" value="{{ old('weight') }}"
                                                 name="weight" placeholder="Weight">
+                                            <div style="color: red">{{ $errors->first('weight') }}</div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -139,6 +142,7 @@
                                             <label>Email<span style="color: red;"> *</span></label>
                                             <input type="text" class="form-control" required
                                                 value="{{ old('email') }}" name="email" placeholder="email">
+                                            <div style="color: red">{{ $errors->first('email') }}</div>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Password<span style="color: red;"> *</span></label>
